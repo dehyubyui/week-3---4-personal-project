@@ -5,7 +5,7 @@
       "description": "Users Api",
       "version": "1.0.0"
     },
-    "host": "week-3-4-edpm.onrender.com",
+    "host": " ",
     "basePath": "/",
     "schemes": [ 
       "https"

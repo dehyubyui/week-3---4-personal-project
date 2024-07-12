@@ -5,7 +5,7 @@ const doc = {
         title: 'Users Api',
         description: 'Users Api'
     },
-    host: 'https://week-3-4-edpm.onrender.com',
+    host: 'https://',
     schemes: ['https']
 };
 

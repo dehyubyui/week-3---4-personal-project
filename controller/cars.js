@@ -4,7 +4,7 @@ const objectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
     try {
-        const result = await mongodb.getDb().db('cse341').collection('cars').find();
+        const result = await mongodb.getDb().db('lesson2').collection('cars').find();
         result.toArray().then((cars) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(cars);
@@ -22,7 +22,7 @@ const findOne = async (req, res, next) => {
     } else {
         try {
             const userId = new ObjectId(req.params.id);
-            const result = await mongodb.getDb().db('cse341').collection('cars').find({ _id: userId });
+            const result = await mongodb.getDb().db('lesson2').collection('cars').find({ _id: userId });
             result.toArray().then((users) => {
                 res.setHeader('Content-Type', 'application/json');
                 res.status(200).json(users[0]);
@@ -45,7 +45,7 @@ const registerCar = async (req, res) => {
         mileAge: req.body.mileAge,
     };
     try {
-        const response = await mongodb.getDb().db('cse341').collection('cars').insertOne(car);
+        const response = await mongodb.getDb().db('lesson2').collection('cars').insertOne(car);
         if (response.acknowledged) {
             res.status(204).send();
         }
@@ -70,7 +70,7 @@ const updateCar = async (req, res) => {
         mileAge: req.body.mileAge,
     };
 
-    const response = await mongodb.getDb().db('cse341').collection('cars').replaceOne({ _id: carId }, car);
+    const response = await mongodb.getDb().db('lesson2').collection('cars').replaceOne({ _id: carId }, car);
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
@@ -85,7 +85,7 @@ const deleteCar = async (req, res) => {
         res.status(400).json('Must use a valid contact id.');
     } else {
         const carId = new ObjectId(req.params.id);
-        const response = await mongodb.getDb().db('cse341').collection('cars').deleteOne({ _id: carId });
+        const response = await mongodb.getDb().db('lesson2').collection('cars').deleteOne({ _id: carId });
         if (response.deletedCount > 0) {
         res.status(204).send();
     } else {
